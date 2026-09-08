@@ -3,22 +3,15 @@
 // Si el script no llegó a cargar (red bloqueada, adblock...) estas
 // funciones simplemente no hacen nada, sin romper el resto de la web.
 //
-// registrarVisita(): cuenta como "página vista" (sube el nº de visitas).
-// Solo se usa UNA vez, al cargar la web por primera vez.
+// La primera visita (la carga inicial de la web) la registra el propio
+// script de GoatCounter en cuanto termina de cargar — así no depende de
+// que nuestro código adivine el momento exacto en que ya está listo.
 //
 // registrarEvento(): se registra aparte, en "Events" dentro de
 // GoatCounter, sin sumar al contador de visitas. Se usa para moverse
 // entre pantallas (para saber qué se usa, sin inflar las visitas) y
 // para acciones como "Consultar" o "Generar gráficas".
 // ======================================
-
-function registrarVisita(ruta, titulo) {
-
-    if (window.goatcounter && typeof window.goatcounter.count === "function") {
-        window.goatcounter.count({ path: ruta, title: titulo });
-    }
-
-}
 
 function registrarEvento(ruta, titulo) {
 
@@ -29,8 +22,6 @@ function registrarEvento(ruta, titulo) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-
-    registrarVisita("/", "Portada");
 
     const registros = await cargarExcel();
 
