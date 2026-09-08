@@ -2,6 +2,14 @@
 // ANALÍTICA (GoatCounter) — sin cookies, sin datos personales.
 // Si el script no llegó a cargar (red bloqueada, adblock...) estas
 // funciones simplemente no hacen nada, sin romper el resto de la web.
+//
+// registrarVisita(): cuenta como "página vista" (sube el nº de visitas).
+// Solo se usa UNA vez, al cargar la web por primera vez.
+//
+// registrarEvento(): se registra aparte, en "Events" dentro de
+// GoatCounter, sin sumar al contador de visitas. Se usa para moverse
+// entre pantallas (para saber qué se usa, sin inflar las visitas) y
+// para acciones como "Consultar" o "Generar gráficas".
 // ======================================
 
 function registrarVisita(ruta, titulo) {
@@ -54,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     mostrarPantalla(pantallaInicio);
 
-    registrarVisita("/inicio", "01 · Records");
+    registrarEvento("pantalla-inicio", "01 · Records");
 
     cargarInicio(registros);
 
@@ -64,7 +72,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     mostrarPantalla(pantallaDirecto);
 
-    registrarVisita("/directo", "04 · Datos en directo");
+    registrarEvento("pantalla-directo", "04 · Datos en directo");
 
     cargarDirecto();
 
@@ -74,7 +82,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     mostrarPantalla(pantallaConsultas);
 
-    registrarVisita("/consultas", "02 · Consultas");
+    registrarEvento("pantalla-consultas", "02 · Consultas");
 
     cargarConsultas(registros);
 
@@ -84,7 +92,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     mostrarPantalla(pantallaGraficas);
 
-    registrarVisita("/graficas", "03 · Gráficas");
+    registrarEvento("pantalla-graficas", "03 · Gráficas");
 
     cargarGraficas(registros);
 
@@ -97,7 +105,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         aplicacion.style.display = "none";
         portada.style.display = "flex";
 
-        registrarVisita("/", "Portada");
+        registrarEvento("pantalla-portada", "Vuelta a portada");
 
         // Al volver, dejamos las tarjetas en su cara delantera
         document.querySelectorAll(".girada").forEach(tarjeta => {
