@@ -212,6 +212,10 @@ const INDICADORES_CONSULTA = {
             tipo: "episodiosLluvia"
         },
         {
+            id: "diasLluvia", nombre: "Días de lluvia", unidad: "días", granularidades: ["dia", "mes"],
+            tipo: "diasLluvia"
+        },
+        {
             id: "diasSinLlover", nombre: "Días sin llover (racha máxima)", unidad: "días", granularidades: ["mes"],
             tipo: "diasSinLlover"
         },
@@ -515,6 +519,17 @@ function calcularEspecialBucket(indicador, registrosBucket, contexto) {
 
         }
 
+        case "diasLluvia": {
+
+            // Días con lluvia diaria acumulada > 0
+            let n = 0;
+            for (const fecha in dias) {
+                if ((maximoDe(dias[fecha].map(r => r.lluviaDiaria)) || 0) > 0) n++;
+            }
+            return n;
+
+        }
+
         case "olasCalor": {
 
             // Episodio de 3+ días consecutivos con temperatura máxima
@@ -761,6 +776,7 @@ function calcularEspecialGlobal(indicador, filas, registrosPeriodo) {
         case "umbralMin":
         case "umbralMinBajo":
         case "episodiosLluvia":
+        case "diasLluvia":
         case "olasCalor":
             return filas.reduce((suma, f) => suma + (f.valor || 0), 0);
 
