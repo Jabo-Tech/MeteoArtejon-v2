@@ -409,21 +409,29 @@ button:hover{
 
 .logoVolver{
 
-    display:block;
+    position:absolute;
 
-    font-size:.7rem;
+    top:5px;
+
+    left:10px;
+
+    font-size:.65rem;
 
     font-weight:400;
+
+    line-height:1;
 
     opacity:.85;
 
     letter-spacing:.3px;
 
-    margin-bottom:2px;
+    pointer-events:none;
 
 }
 
 .logoDashboard{
+
+    position:relative;
 
     min-width:350px;
 
