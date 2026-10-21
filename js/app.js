@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     cargarPortada(registros);
 
+    cargarPrediccionPortada(registros);
+
     const portada = document.getElementById("portada");
     const aplicacion = document.getElementById("aplicacion");
 
@@ -34,6 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const pantallaDirecto = document.getElementById("pantallaDirecto");
     const pantallaConsultas = document.getElementById("pantallaConsultas");
     const pantallaGraficas = document.getElementById("pantallaGraficas");
+    const pantallaPrediccion = document.getElementById("pantallaPrediccion");
 
     function mostrarPantalla(pantalla) {
 
@@ -44,6 +47,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         pantallaDirecto.hidden = pantalla !== pantallaDirecto;
         pantallaConsultas.hidden = pantalla !== pantallaConsultas;
         pantallaGraficas.hidden = pantalla !== pantallaGraficas;
+        pantallaPrediccion.hidden = pantalla !== pantallaPrediccion;
 
         window.scrollTo(0, 0);
 
@@ -89,6 +93,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 };
 
+    document.getElementById("btnPrediccion").onclick = () => {
+
+    mostrarPantalla(pantallaPrediccion);
+
+    registrarEvento("pantalla-prediccion", "04 · Predicción");
+
+    cargarPantallaPrediccion(registros);
+
+};
+
     document.querySelectorAll(".logoDashboard").forEach(boton => {
 
     boton.onclick = () => {
@@ -127,10 +141,30 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     });
 
+    const modalPrediccion = document.getElementById("modalPrediccion");
+
+    document.getElementById("btnExplicacionPrediccion").onclick = () => {
+        modalPrediccion.hidden = false;
+        registrarEvento("modal-prediccion", "Cómo se predice el tiempo");
+    };
+
+    document.getElementById("btnCerrarModalPrediccion").onclick = () => {
+        modalPrediccion.hidden = true;
+    };
+
+    modalPrediccion.addEventListener("click", (evento) => {
+
+        if (evento.target === modalPrediccion) {
+            modalPrediccion.hidden = true;
+        }
+
+    });
+
     document.addEventListener("keydown", (evento) => {
 
         if (evento.key === "Escape") {
             modalVariables.hidden = true;
+            modalPrediccion.hidden = true;
         }
 
     });

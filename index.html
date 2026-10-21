@@ -30,22 +30,65 @@
 
         <main>
 
-            <section id="descripcion">
+            <!-- ==================== PREDICCIÓN (PORTADA) ==================== -->
 
-                <h2>Bienvenido</h2>
+            <section id="prediccionPortada">
 
-                <p>
+                <div class="cabeceraPanel">
+                    <svg width="52" height="52" viewBox="0 0 64 52" aria-hidden="true"><g stroke="#fbbf24" stroke-width="3" stroke-linecap="round"><line x1="22" y1="3" x2="22" y2="8"/><line x1="8" y1="17" x2="13" y2="17"/><line x1="12" y1="7" x2="15.5" y2="10.5"/><line x1="32" y1="7" x2="28.5" y2="10.5"/></g><circle cx="22" cy="18" r="8.5" fill="#fbbf24"/><path d="M22 46h26a9 9 0 0 0 0-18 12 12 0 0 0-22.5 4A7 7 0 0 0 22 46z" fill="#e5e7eb"/></svg>
+                    <h2>Predicción del tiempo</h2>
+                </div>
+
+                <p class="predIntro">Previsión para Vegas de Matute, ajustada con los datos de la estación.</p>
+
+                <p class="predIntroLarga">
+                    Se combinan los modelos que mejor han acertado aquí en el último año y medio,
+                    y se corrigen sus temperaturas con lo que mide la estación.
+                </p>
+
+                <button id="btnExplicacionPrediccion" class="btnExplicacionPrediccion" aria-haspopup="dialog">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#bfdbfe" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.4"/><circle cx="12" cy="17" r=".9" fill="#bfdbfe"/></svg>
+                    <span>¿Quieres entender más sobre cómo se predice el tiempo?</span>
+                </button>
+
+                <div id="predPortadaDias" class="predDiasPortada"></div>
+
+                <p class="predLeyenda">
+                    La flecha indica hacia dónde sopla el viento; las letras, de dónde viene.
+                    El porcentaje es la probabilidad de lluvia; debajo, los litros previstos
+                    (cifra para hoy y mañana, rango a partir de pasado mañana).
+                </p>
+
+                <button id="btnPrediccion" class="btnPrediccion">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>
+                    <span>Ver la predicción a 7 días</span>
+                    <span aria-hidden="true">→</span>
+                </button>
+
+            </section>
+
+            <!-- ==================== BIENVENIDA + RESUMEN ==================== -->
+
+            <section id="resumen">
+
+                <div class="cabeceraPanel">
+                    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><rect x="10" y="14" width="4" height="6"/></svg>
+                    <h2>Bienvenido a MeteoArtejón</h2>
+                </div>
+
+                <p class="textoBienvenida">
                     MeteoArtejón recopila, analiza y visualiza los datos registrados
                     por la estación meteorológica de Vegas de Matute.
                     Podrás consultar récords, estadísticas y gráficas históricas de
                     temperatura, lluvia, viento, humedad, presión y radiación.
                 </p>
 
-            </section>
+                <hr class="separadorPanel">
 
-            <section id="resumen">
-
-                <h2>Resumen de la estación</h2>
+                <div class="cabeceraPanel">
+                    <svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="12" width="4" height="9" rx="1" fill="#60a5fa"/><rect x="10" y="4" width="4" height="17" rx="1" fill="#60a5fa"/><rect x="16" y="9" width="4" height="12" rx="1" fill="#60a5fa"/></svg>
+                    <h2>Resumen de la estación</h2>
+                </div>
 
                 <div class="dato datoLargo">
 
@@ -72,25 +115,25 @@
                     Explicación variables →
                 </button>
 
+                <div class="botonesPortada">
+
+                    <button id="btnInicio">
+                        01 Records
+                    </button>
+
+                    <button id="btnConsultas">
+                        02 Consultas
+                    </button>
+
+                    <button id="btnGraficas">
+                        03 Gráficas
+                    </button>
+
+                </div>
+
             </section>
 
         </main>
-
-        <footer>
-
-            <button id="btnInicio">
-                01 Records
-            </button>
-
-            <button id="btnConsultas">
-                02 Consultas
-            </button>
-
-            <button id="btnGraficas">
-                03 Gráficas
-            </button>
-
-        </footer>
 
         <!-- Oculto temporalmente: para volver a mostrarlo, quita el atributo "hidden" de esta línea -->
         <div class="filaDirecto" hidden>
@@ -155,6 +198,45 @@
                 <dd>A efectos estadísticos, el verano agrupa junio, julio y agosto, y el invierno diciembre, enero y febrero (el invierno "a caballo" entre dos años se identifica con el año en que termina).</dd>
 
             </dl>
+
+        </div>
+
+    </div>
+
+    <!-- ==================== MODAL CÓMO SE PREDICE EL TIEMPO ==================== -->
+
+    <div id="modalPrediccion" class="modalOverlay" hidden role="dialog" aria-modal="true" aria-labelledby="tituloModalPrediccion">
+
+        <div class="modalContenido modalPrediccion">
+
+            <button id="btnCerrarModalPrediccion" class="cerrarModal" aria-label="Cerrar">✕</button>
+
+            <h2 id="tituloModalPrediccion">¿Cómo se predice el tiempo?</h2>
+
+            <h3>1. ¿Qué es un modelo de predicción?</h3>
+            <p>Es un programa que se ejecuta en superordenadores. Divide la atmósfera en una enorme cuadrícula de casillas, de entre 1 y 25 km de lado y con varias capas de altura, y en cada casilla calcula la temperatura, el viento, la humedad o la presión.</p>
+            <p>Se parte de cómo está el tiempo ahora mismo, medido por miles de estaciones, satélites, globos sonda y aviones. Después se aplican las leyes de la física para calcular cómo cambiará todo, paso a paso, durante los próximos días. Este cálculo se repite varias veces al día con datos nuevos.</p>
+
+            <h3>2. ¿Por qué hay varios modelos?</h3>
+            <p>Cada gran servicio meteorológico tiene el suyo: el europeo (ECMWF), el alemán (ICON), el francés (AROME), el americano (GFS)… Usan casillas de distinto tamaño y calculan de forma algo distinta, así que no siempre coinciden.</p>
+            <p>Los de casillas pequeñas “ven” mejor el relieve, como la sierra de Guadarrama o el valle, pero solo llegan a 2-4 días. Los globales cubren todo el planeta y llegan más lejos, pero con menos detalle.</p>
+
+            <h3>3. ¿Por qué se falla más a varios días vista?</h3>
+            <p>La atmósfera es caótica: un error pequeño al principio va creciendo con los días, es el famoso “efecto mariposa”. Para medir esa incertidumbre, el modelo se ejecuta decenas de veces con pequeñas variaciones en el punto de partida. Si todos esos escenarios coinciden, la previsión es fiable; si se separan, no lo es.</p>
+            <p>De ahí salen la <strong>probabilidad de lluvia</strong> (en cuántos escenarios llueve) y el indicador de <strong>fiabilidad</strong> de cada día.</p>
+
+            <div class="cajaModal">
+                <h3>4. ¿Cómo se aplica en MeteoArtejón?</h3>
+                <ol>
+                    <li><strong>Se eligieron los modelos con datos de aquí.</strong> Se compararon 16 modelos con lo que midió la estación de Vegas de Matute durante año y medio, y se eligieron los que más acertaron.</li>
+                    <li><strong>Un modelo para cada plazo.</strong> Para hoy, mañana y pasado se usan los modelos de alta resolución (ICON-EU y AROME); del día 4 al 7, la media de varios modelos globales, que a esa distancia acierta más que cualquiera por separado.</li>
+                    <li><strong>Se corrige con la estación.</strong> Los modelos dan máximas entre 1 y 2 °C más bajas de lo que se mide en el pueblo, así que se corrigen. El viento se adapta a la altura del anemómetro.</li>
+                    <li><strong>Se muestra la incertidumbre.</strong> Cuando no está claro, la lluvia aparece como probabilidad y como rango de litros, y la fiabilidad avisa.</li>
+                    <li><strong>Se audita.</strong> Cada vez que se actualizan los datos de la estación, se comprueba si se cumplió lo que se predijo. Los resultados están en la auditoría predictiva, al final de la pantalla de predicción.</li>
+                </ol>
+            </div>
+
+            <p class="notaModal">Datos de los modelos: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>, que reúne los de los principales servicios meteorológicos.</p>
 
         </div>
 
@@ -888,6 +970,80 @@
 
             </section>
 
+            <!-- ==================== PREDICCIÓN ==================== -->
+
+            <section id="pantallaPrediccion" hidden>
+
+                <header class="cabeceraDashboard">
+
+                    <div>
+
+                        <h1>04 · Predicción</h1>
+                        <p>Vegas de Matute · ajustada con los datos de la estación</p>
+
+                    </div>
+
+                    <button class="logoDashboard">
+
+                        <span class="logoVolver">← Volver al inicio</span>MeteoArtejón
+
+                    </button>
+
+                </header>
+
+                <section class="bloqueDashboard">
+
+                    <h2>Previsión de 7 días</h2>
+
+                    <div id="predDias" class="predDias"></div>
+
+                    <p class="predLeyenda">
+                        Lluvia: probabilidad y litros previstos (cifra para hoy y mañana, rango después).
+                        La flecha indica hacia dónde sopla el viento; las letras, de dónde viene.
+                        Fiabilidad: cuánto coinciden entre sí los distintos escenarios de los modelos
+                        y cuánto ha cambiado la previsión de ese día en las últimas actualizaciones.
+                    </p>
+
+                </section>
+
+                <section class="bloqueDashboard">
+
+                    <h2>Previsión por horas</h2>
+
+                    <div class="predPanel">
+
+                        <div class="predHorasCabecera">
+                            <div>
+                                <div id="predHorasTitulo" class="predHorasTitulo">--</div>
+                                <div id="predHorasPaso" class="predNota">--</div>
+                            </div>
+                            <div id="predTabs" class="predTabs" role="tablist" aria-label="Elegir día"></div>
+                        </div>
+
+                        <div id="predTabla" class="predTablaContenedor"></div>
+
+                    </div>
+
+                </section>
+
+                <section class="bloqueDashboard">
+
+                    <h2 id="predExtrasTitulo">Datos adicionales</h2>
+
+                    <div id="predExtras" class="predExtras"></div>
+
+                </section>
+
+                <section class="bloqueDashboard">
+
+                    <h2>Auditoría predictiva</h2>
+
+                    <div id="predAuditoria" class="predPanel"></div>
+
+                </section>
+
+            </section>
+
             <!-- ==================== DATOS EN DIRECTO ==================== -->
 
             <section id="pantallaDirecto" hidden>
@@ -990,6 +1146,8 @@
     <script src="js/directo.js"></script>
     <script src="js/pantalla-consultas.js"></script>
     <script src="js/pantalla-graficas.js"></script>
+    <script src="js/prediccion.js"></script>
+    <script src="js/pantalla-prediccion.js"></script>
     <script src="js/app.js"></script>
 
     <!-- ==================== ANALÍTICA (GoatCounter) ====================

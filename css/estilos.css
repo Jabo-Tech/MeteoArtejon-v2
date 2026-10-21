@@ -1649,3 +1649,725 @@ button:hover{
     line-height:1.5;
 
 }
+
+
+/* ==========================================
+   PREDICCIÓN
+   (portada, pantalla 04 y modal explicativo)
+========================================== */
+
+/* ---------- Portada ---------- */
+
+#portada main{
+    max-width:1220px;
+    gap:32px;
+}
+
+#prediccionPortada{
+    background:var(--color-panel);
+    backdrop-filter:blur(12px);
+    padding:28px 22px;
+    border-radius:var(--radio);
+    box-shadow:var(--sombra);
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    min-width:0;
+}
+
+#resumen{
+    display:flex;
+    flex-direction:column;
+}
+
+.cabeceraPanel{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:12px;
+}
+
+.cabeceraPanel svg{
+    flex-shrink:0;
+}
+
+#prediccionPortada .cabeceraPanel,
+#prediccionPortada h2,
+#resumen .cabeceraPanel h2{
+    margin-bottom:0;
+}
+
+#prediccionPortada .cabeceraPanel{
+    margin-bottom:0;
+}
+
+.predIntro{
+    color:#e5e7eb;
+}
+
+.predIntroLarga{
+    color:var(--color-secundario);
+    font-size:.92rem;
+    line-height:1.6;
+}
+
+.textoBienvenida{
+    line-height:1.8;
+    color:#e5e7eb;
+}
+
+.separadorPanel{
+    border:none;
+    height:1px;
+    background:rgba(255,255,255,.18);
+    margin:24px 0;
+}
+
+.botonesPortada{
+    margin-top:auto;
+    padding-top:26px;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:12px;
+}
+
+.botonesPortada button{
+    padding:16px 10px;
+}
+
+.btnExplicacionPrediccion{
+    align-self:flex-start;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 14px;
+    background:rgba(37,99,235,.25);
+    border:1px solid rgba(147,197,253,.55);
+    color:#dbeafe;
+    font-size:.92rem;
+    font-weight:600;
+    text-align:left;
+}
+
+.btnExplicacionPrediccion:hover{
+    background:rgba(37,99,235,.45);
+    transform:none;
+}
+
+.btnExplicacionPrediccion svg{
+    flex-shrink:0;
+}
+
+.predDiasPortada{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:8px;
+}
+
+.predDiaPortada{
+    background:rgba(15,23,42,.45);
+    border-radius:12px;
+    padding:16px 8px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    min-width:0;
+    text-align:center;
+}
+
+.predDiaNombre{
+    font-weight:700;
+    font-size:1.05rem;
+}
+
+.predDiaFecha{
+    color:var(--color-secundario);
+    font-size:.82rem;
+    margin-top:-6px;
+}
+
+.predDiaIcono{
+    display:flex;
+    justify-content:center;
+    min-height:50px;
+}
+
+.predTemperaturas{
+    font-size:1.6rem;
+    font-weight:700;
+}
+
+.predTemperaturas .max{
+    color:#fca5a5;
+}
+
+.predTemperaturas .min{
+    color:#93c5fd;
+    font-size:.85em;
+}
+
+.predDiaPortada .predTemperaturas .max{
+    color:#ffffff;
+}
+
+.predAvisos{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:4px;
+}
+
+.predAviso{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    background:rgba(96,165,250,.2);
+    border:1px solid rgba(147,197,253,.55);
+    color:#dbeafe;
+    border-radius:999px;
+    padding:3px 9px;
+    font-size:.72rem;
+    font-weight:700;
+}
+
+.predStats{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:4px;
+    width:100%;
+    margin-top:4px;
+}
+
+.predStat{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:3px;
+    min-width:0;
+    font-size:.9rem;
+}
+
+.predStat span{
+    color:var(--color-secundario);
+    font-size:.74rem;
+}
+
+.predStat em{
+    font-style:normal;
+    color:#93c5fd;
+    font-size:.72rem;
+}
+
+.predLeyenda{
+    color:var(--color-secundario);
+    font-size:.78rem;
+    line-height:1.5;
+}
+
+.btnPrediccion{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    font-size:1.05rem;
+    font-weight:600;
+    padding:16px;
+}
+
+.predCargando{
+    grid-column:1 / -1;
+    color:var(--color-secundario);
+    text-align:center;
+    padding:30px 10px;
+}
+
+/* ---------- Pantalla 04 ---------- */
+
+#pantallaPrediccion{
+    max-width:1360px;
+    margin:auto;
+    padding:40px;
+}
+
+#pantallaPrediccion .bloqueDashboard{
+    margin-bottom:34px;
+}
+
+.predDias{
+    display:grid;
+    grid-template-columns:repeat(7,minmax(0,1fr));
+    gap:10px;
+}
+
+.predCard{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:9px;
+    padding:14px 12px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(12px);
+    border:2px solid transparent;
+    border-radius:14px;
+    color:#ffffff;
+    text-align:left;
+    font-size:.85rem;
+    min-width:0;
+}
+
+.predCard:hover{
+    background:rgba(255,255,255,.18);
+    transform:none;
+}
+
+.predCard.seleccionada{
+    border-color:#60a5fa;
+}
+
+.predCard:focus-visible,
+.predTab:focus-visible,
+.predPeriodo:focus-visible{
+    outline:3px solid #fde68a;
+    outline-offset:2px;
+}
+
+.predCardDia{
+    text-align:center;
+    font-weight:700;
+    font-size:1.05rem;
+    letter-spacing:.5px;
+}
+
+.predCardFecha{
+    text-align:center;
+    color:var(--color-secundario);
+    font-size:.8rem;
+    margin-top:-6px;
+}
+
+.predCard .predTemperaturas{
+    text-align:center;
+    font-size:1.4rem;
+}
+
+.predCardSeparador{
+    height:1px;
+    background:rgba(255,255,255,.18);
+}
+
+.predCardFila{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.predCardFila svg{
+    flex-shrink:0;
+}
+
+.predCardFila small{
+    color:var(--color-secundario);
+}
+
+.predFiabilidad{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    color:var(--color-secundario);
+}
+
+.predFiabilidad strong{
+    color:#ffffff;
+}
+
+.predBarras{
+    display:flex;
+    gap:3px;
+}
+
+.predBarras span{
+    width:5px;
+    height:14px;
+    border-radius:2px;
+    background:rgba(255,255,255,.22);
+}
+
+.predBarras span.activa{
+    background:#60a5fa;
+}
+
+.predPanel{
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(12px);
+    border-radius:14px;
+    padding:16px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    min-width:0;
+}
+
+.predHorasCabecera{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.predHorasTitulo{
+    font-size:1.15rem;
+    font-weight:700;
+    margin-bottom:3px;
+}
+
+.predNota{
+    color:var(--color-secundario);
+    font-size:.8rem;
+}
+
+.predTabs,
+.predPeriodos{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+}
+
+.predTab,
+.predPeriodo{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1px;
+    min-height:44px;
+    min-width:64px;
+    padding:6px 10px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,.18);
+    background:rgba(15,23,42,.45);
+    font-size:.85rem;
+}
+
+.predTab span{
+    font-size:.72rem;
+    color:#dbeafe;
+}
+
+.predTab:hover,
+.predPeriodo:hover{
+    transform:none;
+    background:rgba(37,99,235,.45);
+}
+
+.predTab.activa,
+.predPeriodo.activa{
+    background:var(--color-boton);
+}
+
+.predTablaContenedor{
+    overflow-x:auto;
+    border-radius:10px;
+    background:rgba(15,23,42,.55);
+}
+
+.predTablaHoras{
+    width:100%;
+    min-width:760px;
+    border-collapse:collapse;
+    font-size:.82rem;
+}
+
+.predTablaHoras th{
+    position:sticky;
+    left:0;
+    z-index:1;
+    background:#172036;
+    color:var(--color-secundario);
+    font-weight:400;
+    text-align:left;
+    white-space:nowrap;
+    padding:9px 10px;
+    width:128px;
+}
+
+.predTablaHoras td{
+    text-align:center;
+    padding:7px 2px;
+    min-width:38px;
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.predSuave{
+    color:var(--color-secundario);
+    font-size:.72rem;
+}
+
+.predExtras{
+    display:grid;
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    gap:12px;
+}
+
+.predExtra{
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(12px);
+    border-radius:14px;
+    padding:16px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.predExtra svg{
+    flex-shrink:0;
+}
+
+.predExtraTitulo{
+    color:var(--color-secundario);
+    font-size:.85rem;
+}
+
+.predExtraValor{
+    font-size:1.25rem;
+    font-weight:700;
+    margin-top:2px;
+}
+
+.predUv{
+    display:inline-block;
+    color:#111827;
+    border-radius:6px;
+    padding:1px 9px;
+}
+
+/* ---------- Auditoría ---------- */
+
+.predAudCabecera{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.predAudCabecera p{
+    color:#e5e7eb;
+    max-width:640px;
+}
+
+.predAudTabla{
+    display:grid;
+    grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr);
+    gap:0 8px;
+    align-items:center;
+}
+
+.predAudColumna{
+    text-align:center;
+    font-weight:700;
+    font-size:.9rem;
+    padding-bottom:8px;
+}
+
+.predAudPregunta,
+.predAudCelda{
+    padding:10px 0;
+    border-top:1px solid rgba(255,255,255,.12);
+}
+
+.predAudPregunta{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+}
+
+.predAudPregunta span{
+    color:var(--color-secundario);
+    font-size:.76rem;
+}
+
+.predAudCelda{
+    display:flex;
+    justify-content:center;
+}
+
+.predSemaforo{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color:#111827;
+    font-weight:700;
+    border-radius:999px;
+    padding:6px 14px;
+    font-size:1.05rem;
+}
+
+.predSemaforo.bien{ background:#86efac; }
+.predSemaforo.regular{ background:#fde047; }
+.predSemaforo.mal{ background:#fca5a5; }
+
+.predAudFrase{
+    font-weight:700;
+    color:#fde68a;
+}
+
+/* ---------- Modal ---------- */
+
+.modalPrediccion h3{
+    margin:20px 0 6px;
+    color:#f5de59;
+    font-size:1.08rem;
+}
+
+.modalPrediccion p{
+    color:#e5e7eb;
+    line-height:1.65;
+    margin-bottom:8px;
+}
+
+.cajaModal{
+    margin-top:18px;
+    background:rgba(255,255,255,.06);
+    border-radius:12px;
+    padding:4px 16px 14px;
+}
+
+.cajaModal ol{
+    padding-left:20px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    color:#e5e7eb;
+    line-height:1.6;
+}
+
+.notaModal{
+    margin-top:18px;
+    font-size:.82rem;
+    color:#9ca3af !important;
+}
+
+.notaModal a{
+    color:#bcd2ff;
+}
+
+/* ---------- Responsive ---------- */
+
+@media(max-width:1100px){
+
+    .predDias{
+        display:flex;
+        overflow-x:auto;
+        scroll-snap-type:x mandatory;
+        padding-bottom:8px;
+    }
+
+    .predDias .predCard{
+        flex:0 0 150px;
+        width:150px;
+        scroll-snap-align:start;
+    }
+
+}
+
+@media(max-width:900px){
+
+    .predExtras{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    /* La regla general pone todos los botones a lo ancho en móvil;
+       estos deben conservar su tamaño */
+    .btnExplicacionPrediccion,
+    .predTab,
+    .predPeriodo{
+        width:auto;
+    }
+
+    .botonesPortada{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:768px){
+
+    #pantallaPrediccion{
+        padding:15px;
+    }
+
+}
+
+@media(max-width:560px){
+
+    #portada{
+        padding:24px 12px;
+    }
+
+    #prediccionPortada{
+        padding:20px 12px;
+    }
+
+    #resumen{
+        padding:24px 18px;
+    }
+
+    .predDiasPortada{
+        gap:6px;
+    }
+
+    .predStat{
+        font-size:.82rem;
+    }
+
+    .predStat strong{
+        white-space:nowrap;
+    }
+
+    .predStat span{
+        font-size:.7rem;
+    }
+
+    .predIntroLarga{
+        display:none;
+    }
+
+    .predDiaPortada{
+        padding:14px 4px;
+    }
+
+    .predTemperaturas{
+        font-size:1.4rem;
+    }
+
+    /* En el móvil: lluvia en una fila, viento y dirección debajo */
+    .predStats{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        row-gap:14px;
+    }
+
+    .predStatLluvia{
+        grid-column:1 / -1;
+    }
+
+    .predTabs{
+        flex-wrap:nowrap;
+        overflow-x:auto;
+        padding-bottom:6px;
+    }
+
+    .predTab{
+        flex:0 0 auto;
+    }
+
+    .predDias .predCard{
+        flex-basis:138px;
+        width:138px;
+    }
+
+    .predExtras{
+        grid-template-columns:1fr;
+    }
+
+}
