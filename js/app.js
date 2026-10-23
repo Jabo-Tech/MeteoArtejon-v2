@@ -23,17 +23,19 @@ function registrarEvento(ruta, titulo) {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
+    // El directo no depende del Excel: se pide antes para que salga cuanto antes
+    cargarDirectoPortada();
+
     const registros = await cargarExcel();
 
     cargarPortada(registros);
 
-    cargarPrediccionPortada(registros);
+    cargarPrediccionPortada(registros).then(directoRepintar);
 
     const portada = document.getElementById("portada");
     const aplicacion = document.getElementById("aplicacion");
 
     const pantallaInicio = document.getElementById("pantallaInicio");
-    const pantallaDirecto = document.getElementById("pantallaDirecto");
     const pantallaConsultas = document.getElementById("pantallaConsultas");
     const pantallaGraficas = document.getElementById("pantallaGraficas");
     const pantallaPrediccion = document.getElementById("pantallaPrediccion");
@@ -44,7 +46,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         aplicacion.style.display = "block";
 
         pantallaInicio.hidden = pantalla !== pantallaInicio;
-        pantallaDirecto.hidden = pantalla !== pantallaDirecto;
         pantallaConsultas.hidden = pantalla !== pantallaConsultas;
         pantallaGraficas.hidden = pantalla !== pantallaGraficas;
         pantallaPrediccion.hidden = pantalla !== pantallaPrediccion;
@@ -60,16 +61,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     registrarEvento("pantalla-inicio", "01 · Records");
 
     cargarInicio(registros);
-
-};
-
-    document.getElementById("btnDatosDirecto").onclick = () => {
-
-    mostrarPantalla(pantallaDirecto);
-
-    registrarEvento("pantalla-directo", "04 · Datos en directo");
-
-    cargarDirecto();
 
 };
 

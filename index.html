@@ -30,121 +30,178 @@
 
         <main>
 
-            <!-- ==================== PREDICCIÓN (PORTADA) ==================== -->
+            <div class="columnaPortada">
 
-            <section id="prediccionPortada">
+                <!-- ==================== BIENVENIDA ==================== -->
 
-                <div class="cabeceraPanel">
-                    <svg width="52" height="52" viewBox="0 0 64 52" aria-hidden="true"><g stroke="#fbbf24" stroke-width="3" stroke-linecap="round"><line x1="22" y1="3" x2="22" y2="8"/><line x1="8" y1="17" x2="13" y2="17"/><line x1="12" y1="7" x2="15.5" y2="10.5"/><line x1="32" y1="7" x2="28.5" y2="10.5"/></g><circle cx="22" cy="18" r="8.5" fill="#fbbf24"/><path d="M22 46h26a9 9 0 0 0 0-18 12 12 0 0 0-22.5 4A7 7 0 0 0 22 46z" fill="#e5e7eb"/></svg>
-                    <h2>Predicción del tiempo</h2>
-                </div>
+                <section id="bienvenida">
 
-                <p class="predIntro">Previsión para Vegas de Matute, ajustada con los datos de la estación.</p>
+                    <div class="cabeceraPanel">
+                        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><rect x="10" y="14" width="4" height="6"/></svg>
+                        <h2>Bienvenido a MeteoArtejón</h2>
+                    </div>
 
-                <p class="predIntroLarga">
-                    Se combinan los modelos que mejor han acertado aquí en el último año y medio,
-                    y se corrigen sus temperaturas con lo que mide la estación.
-                </p>
+                    <p class="textoBienvenida">
+                        MeteoArtejón reúne el tiempo actual, la predicción y el histórico meteorológico
+                        de Vegas de Matute. Consulta las condiciones en directo, la previsión de los
+                        próximos días y los datos registrados por la estación a lo largo del tiempo.
+                    </p>
 
-                <button id="btnExplicacionPrediccion" class="btnExplicacionPrediccion" aria-haspopup="dialog">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#bfdbfe" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.4"/><circle cx="12" cy="17" r=".9" fill="#bfdbfe"/></svg>
-                    <span>¿Quieres entender más sobre cómo se predice el tiempo?</span>
-                </button>
+                </section>
 
-                <div id="predPortadaDias" class="predDiasPortada"></div>
+                <!-- ==================== PREDICCIÓN (PORTADA) ==================== -->
 
-                <p class="predLeyenda">
-                    La flecha indica hacia dónde sopla el viento; las letras, de dónde viene.
-                    El porcentaje es la probabilidad de lluvia; debajo, los litros previstos
-                    (cifra para hoy y mañana, rango a partir de pasado mañana).
-                </p>
+                <section id="prediccionPortada">
 
-                <button id="btnPrediccion" class="btnPrediccion">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>
-                    <span>Ver la predicción a 7 días</span>
-                    <span aria-hidden="true">→</span>
-                </button>
+                    <div class="cabeceraPanel">
+                        <svg width="52" height="52" viewBox="0 0 64 52" aria-hidden="true"><g stroke="#fbbf24" stroke-width="3" stroke-linecap="round"><line x1="22" y1="3" x2="22" y2="8"/><line x1="8" y1="17" x2="13" y2="17"/><line x1="12" y1="7" x2="15.5" y2="10.5"/><line x1="32" y1="7" x2="28.5" y2="10.5"/></g><circle cx="22" cy="18" r="8.5" fill="#fbbf24"/><path d="M22 46h26a9 9 0 0 0 0-18 12 12 0 0 0-22.5 4A7 7 0 0 0 22 46z" fill="#e5e7eb"/></svg>
+                        <h2>Predicción del tiempo</h2>
+                    </div>
 
-            </section>
+                    <p class="predIntro">Previsión para Vegas de Matute, ajustada con los datos de la estación.</p>
 
-            <!-- ==================== BIENVENIDA + RESUMEN ==================== -->
+                    <p class="predIntroLarga">
+                        Se combinan los modelos que mejor han acertado aquí en el último año y medio,
+                        y se corrigen sus temperaturas con lo que mide la estación.
+                    </p>
 
-            <section id="resumen">
-
-                <div class="cabeceraPanel">
-                    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><rect x="10" y="14" width="4" height="6"/></svg>
-                    <h2>Bienvenido a MeteoArtejón</h2>
-                </div>
-
-                <p class="textoBienvenida">
-                    MeteoArtejón recopila, analiza y visualiza los datos registrados
-                    por la estación meteorológica de Vegas de Matute.
-                    Podrás consultar récords, estadísticas y gráficas históricas de
-                    temperatura, lluvia, viento, humedad, presión y radiación.
-                </p>
-
-                <hr class="separadorPanel">
-
-                <div class="cabeceraPanel">
-                    <svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="12" width="4" height="9" rx="1" fill="#60a5fa"/><rect x="10" y="4" width="4" height="17" rx="1" fill="#60a5fa"/><rect x="16" y="9" width="4" height="12" rx="1" fill="#60a5fa"/></svg>
-                    <h2>Resumen de la estación</h2>
-                </div>
-
-                <div class="dato datoLargo">
-
-                    <span class="tituloDato">Periodo disponible</span>
-                    <span id="periodoDisponible">--</span>
-
-                </div>
-
-                <div class="dato">
-
-                    <span class="tituloDato">Registros</span>
-                    <span id="numeroRegistros">--</span>
-
-                </div>
-
-                <div class="dato">
-
-                    <span class="tituloDato">Última actualización</span>
-                    <span id="ultimaActualizacion">--</span>
-
-                </div>
-
-                <button id="btnExplicacionVariables" class="enlaceExplicacion">
-                    Explicación variables →
-                </button>
-
-                <div class="botonesPortada">
-
-                    <button id="btnInicio">
-                        01 Records
+                    <button id="btnExplicacionPrediccion" class="btnExplicacionPrediccion" aria-haspopup="dialog">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#bfdbfe" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.4"/><circle cx="12" cy="17" r=".9" fill="#bfdbfe"/></svg>
+                        <span>¿Quieres entender más sobre cómo se predice el tiempo?</span>
                     </button>
 
-                    <button id="btnConsultas">
-                        02 Consultas
+                    <div id="predPortadaDias" class="predDiasPortada"></div>
+
+                    <p class="predLeyenda">
+                        La flecha indica hacia dónde sopla el viento; las letras, de dónde viene.
+                        El porcentaje es la probabilidad de lluvia; debajo, los litros previstos
+                        (cifra para hoy y mañana, rango a partir de pasado mañana).
+                    </p>
+
+                    <button id="btnPrediccion" class="btnPrediccion">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>
+                        <span>Ver la predicción a 7 días</span>
+                        <span aria-hidden="true">→</span>
                     </button>
 
-                    <button id="btnGraficas">
-                        03 Gráficas
+                </section>
+
+            </div>
+
+            <div class="columnaPortada">
+
+                <!-- ==================== CONDICIONES ACTUALES (DIRECTO) ==================== -->
+
+                <section id="directoPortada" aria-live="polite">
+
+                    <div class="cabeceraPanel cabeceraDirecto">
+                        <svg width="46" height="46" viewBox="0 0 64 64" aria-hidden="true"><g stroke="#fbbf24" stroke-width="4" stroke-linecap="round"><line x1="32" y1="4" x2="32" y2="11"/><line x1="32" y1="53" x2="32" y2="60"/><line x1="4" y1="32" x2="11" y2="32"/><line x1="53" y1="32" x2="60" y2="32"/><line x1="12.2" y1="12.2" x2="17.1" y2="17.1"/><line x1="46.9" y1="46.9" x2="51.8" y2="51.8"/><line x1="51.8" y1="12.2" x2="46.9" y2="17.1"/><line x1="17.1" y1="46.9" x2="12.2" y2="51.8"/></g><circle cx="32" cy="32" r="13" fill="#fbbf24"/></svg>
+                        <h2>Condiciones actuales</h2>
+                        <span id="directoHora" class="directoHora">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4.5L4 8"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.5 4.5L20 16"/><path d="M20 20v-4h-4"/></svg>
+                            <span id="directoHoraTexto">Conectando con la estación…</span>
+                        </span>
+                    </div>
+
+                    <div id="directoCuerpo" class="directoCuerpo">
+
+                        <div class="directoPrincipal">
+                            <div id="directoIcono" class="directoIcono"></div>
+                            <div>
+                                <div id="directoTemp" class="directoTemp">--</div>
+                                <div id="directoCielo" class="directoCielo">&nbsp;</div>
+                                <div id="directoExtremos" class="directoExtremos">&nbsp;</div>
+                            </div>
+                        </div>
+
+                        <dl class="directoLista">
+
+                            <div class="directoFila">
+                                <dt><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5S5 10.5 5 15a7 7 0 0 0 14 0c0-4.5-7-12.5-7-12.5z"/><line x1="9.5" y1="17.5" x2="14.5" y2="12.5"/><circle cx="9.8" cy="12.8" r=".9" fill="#93c5fd"/><circle cx="14.2" cy="17.2" r=".9" fill="#93c5fd"/></svg>Humedad</dt>
+                                <dd><strong id="directoHumedad">--</strong></dd>
+                            </div>
+
+                            <div class="directoFila">
+                                <dt><svg width="20" height="18" viewBox="0 0 24 22" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 8h13a3 3 0 1 0-3-3"/><path d="M2 13h18a3 3 0 1 1-3 3"/><path d="M2 18h8"/></svg>Viento</dt>
+                                <dd><strong id="directoViento">--</strong><span id="directoRacha" class="directoSub"></span></dd>
+                            </div>
+
+                            <div class="directoFila">
+                                <dt><svg width="18" height="20" viewBox="0 0 20 22" aria-hidden="true"><path d="M10 2C10 2 3 10 3 14a7 7 0 0 0 14 0C17 10 10 2 10 2z" fill="#60a5fa"/></svg>Lluvia hoy</dt>
+                                <dd><strong id="directoLluvia">--</strong><span id="directoIntensidad" class="directoSub"></span></dd>
+                            </div>
+
+                            <div class="directoFila">
+                                <dt><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4.5 18.5a9 9 0 1 1 15 0"/><line x1="12" y1="14" x2="16" y2="9"/><circle cx="12" cy="14" r="1.6" fill="#93c5fd"/></svg>Presión</dt>
+                                <dd><strong id="directoPresion">--</strong><span id="directoTendencia" class="directoSub"></span></dd>
+                            </div>
+
+                            <div class="directoFila">
+                                <dt><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="#fbbf24"/><g stroke="#fbbf24" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1.5" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.5" y2="12"/></g></svg>Radiación solar</dt>
+                                <dd><strong id="directoRadiacion">--</strong></dd>
+                            </div>
+
+                        </dl>
+
+                    </div>
+
+                </section>
+
+                <!-- ==================== DATOS HISTÓRICOS ==================== -->
+
+                <section id="resumen">
+
+                    <div class="cabeceraPanel">
+                        <svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="12" width="4" height="9" rx="1" fill="#60a5fa"/><rect x="10" y="4" width="4" height="17" rx="1" fill="#60a5fa"/><rect x="16" y="9" width="4" height="12" rx="1" fill="#60a5fa"/></svg>
+                        <h2>Datos históricos</h2>
+                    </div>
+
+                    <div class="dato datoLargo">
+
+                        <span class="tituloDato">Periodo disponible</span>
+                        <span id="periodoDisponible">--</span>
+
+                    </div>
+
+                    <div class="dato">
+
+                        <span class="tituloDato">Registros</span>
+                        <span id="numeroRegistros">--</span>
+
+                    </div>
+
+                    <div class="dato">
+
+                        <span class="tituloDato">Última actualización</span>
+                        <span id="ultimaActualizacion">--</span>
+
+                    </div>
+
+                    <button id="btnExplicacionVariables" class="enlaceExplicacion">
+                        Explicación variables →
                     </button>
 
-                </div>
+                    <div class="botonesPortada">
 
-            </section>
+                        <button id="btnInicio">
+                            01 Records
+                        </button>
+
+                        <button id="btnConsultas">
+                            02 Consultas
+                        </button>
+
+                        <button id="btnGraficas">
+                            03 Gráficas
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </div>
 
         </main>
-
-        <!-- Oculto temporalmente: para volver a mostrarlo, quita el atributo "hidden" de esta línea -->
-        <div class="filaDirecto" hidden>
-
-            <span class="insigniaDirecto"><span class="puntoDirecto"></span>LIVE</span>
-
-            <button id="btnDatosDirecto">
-                04 Datos en directo
-            </button>
-
-        </div>
 
     </section>
 
@@ -1044,92 +1101,6 @@
 
             </section>
 
-            <!-- ==================== DATOS EN DIRECTO ==================== -->
-
-            <section id="pantallaDirecto" hidden>
-
-                <header class="cabeceraDashboard">
-
-                    <div>
-
-                        <h1>04 · Datos en directo</h1>
-                        <p>Estación de Vegas de Matute (Ecowitt)</p>
-
-                    </div>
-
-                    <button id="btnPortadaDirecto" class="logoDashboard">
-
-                        <span class="logoVolver">← Volver al inicio</span>MeteoArtejón
-
-                    </button>
-
-                </header>
-
-                <section class="bloqueDashboard">
-
-                    <h2>Condiciones actuales</h2>
-
-                    <div id="avisoDirecto" class="avisoDirecto" hidden></div>
-
-                    <div class="gridDirecto">
-
-                        <article class="tarjetaDirecto">
-                            <div class="iconoTarjeta">🌡️</div>
-                            <h3 class="tituloTarjeta">Temperatura</h3>
-                            <div id="directoTemperatura" class="valorTarjeta">--</div>
-                            <div id="directoSensacion" class="detalleTarjeta">--</div>
-                        </article>
-
-                        <article class="tarjetaDirecto">
-                            <div class="iconoTarjeta">💧</div>
-                            <h3 class="tituloTarjeta">Humedad</h3>
-                            <div id="directoHumedad" class="valorTarjeta">--</div>
-                            <div class="detalleTarjeta">Humedad relativa</div>
-                        </article>
-
-                        <article class="tarjetaDirecto">
-                            <div class="iconoTarjeta">💨</div>
-                            <h3 class="tituloTarjeta">Viento</h3>
-                            <div id="directoViento" class="valorTarjeta">--</div>
-                            <div id="directoRacha" class="detalleTarjeta">--</div>
-                        </article>
-
-                        <article class="tarjetaDirecto">
-                            <div class="iconoTarjeta">🧭</div>
-                            <h3 class="tituloTarjeta">Dirección</h3>
-                            <div id="directoDireccion" class="valorTarjeta">--</div>
-                            <div class="detalleTarjeta">Instantánea</div>
-                        </article>
-
-                        <article class="tarjetaDirecto">
-                            <div class="iconoTarjeta">🔵</div>
-                            <h3 class="tituloTarjeta">Presión</h3>
-                            <div id="directoPresion" class="valorTarjeta">--</div>
-                            <div class="detalleTarjeta">Relativa</div>
-                        </article>
-
-                        <article class="tarjetaDirecto">
-                            <div class="iconoTarjeta">🌧️</div>
-                            <h3 class="tituloTarjeta">Lluvia hoy</h3>
-                            <div id="directoLluvia" class="valorTarjeta">--</div>
-                            <div id="directoIntensidad" class="detalleTarjeta">--</div>
-                        </article>
-
-                        <article class="tarjetaDirecto">
-                            <div class="iconoTarjeta">☀️</div>
-                            <h3 class="tituloTarjeta">Radiación / UVI</h3>
-                            <div id="directoRadiacion" class="valorTarjeta">--</div>
-                            <div id="directoUvi" class="detalleTarjeta">--</div>
-                        </article>
-
-                    </div>
-
-                    <p id="directoActualizado" class="notaDirecto">--</p>
-
-                </section>
-
-            </section>
-
         </main>
 
     </section>
@@ -1143,7 +1114,7 @@
     <script src="js/portada.js"></script>
     <script src="js/curiosidades.js"></script>
     <script src="js/inicio.js"></script>
-    <script src="js/directo.js"></script>
+    <script src="js/directo-portada.js"></script>
     <script src="js/pantalla-consultas.js"></script>
     <script src="js/pantalla-graficas.js"></script>
     <script src="js/prediccion.js"></script>
