@@ -2445,6 +2445,22 @@ button:hover{
         width:100%;
     }
 
+    .cabeceraDirecto{
+        flex-wrap:wrap;
+        gap:10px 12px;
+    }
+
+    .cabeceraDirecto > svg{
+        width:36px;
+        height:36px;
+    }
+
+    .cabeceraDirecto h2{
+        font-size:1.3rem;
+        flex:1;
+        min-width:0;
+    }
+
     .directoPrincipal{
         gap:14px;
     }
