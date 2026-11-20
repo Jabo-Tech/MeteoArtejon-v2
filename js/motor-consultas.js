@@ -205,8 +205,8 @@ const INDICADORES_CONSULTA = {
         },
         {
             // Solo para Gráficas: lluvia caída en cada día/mes (sin acumular)
-            id: "lluviaPeriodo", nombre: "Precipitación por día/mes", unidad: "mm", granularidades: ["dia", "mes"],
-            tipo: "lluviaAcumulada", soloGraficas: true
+            id: "lluviaPeriodo", nombre: "Precipitación por día/mes", unidad: "mm", granularidades: ["hora", "dia", "mes"],
+            tipo: "lluviaPeriodo", soloGraficas: true
         },
         {
             id: "masLluvioso", nombre: "Más lluvioso", unidad: "mm", granularidades: ["dia", "mes"],
@@ -568,6 +568,37 @@ function calcularEspecialBucket(indicador, registrosBucket, contexto) {
 
         }
 
+        case "lluviaPeriodo": {
+
+            // Por horas: lluviaDiaria es un acumulado del día, así que la
+            // lluvia de una hora = acumulado al final de esa hora menos el
+            // acumulado al final de la hora anterior (mismo día).
+            if (contexto.granularidad === "hora") {
+
+                const r0 = registrosBucket[0];
+                const hh = Number(r0.hora.substring(0, 2));
+                const finHora = contexto.lluviaFinHora;
+                const actual = finHora[`${r0.fecha} ${String(hh).padStart(2, "0")}`];
+                const previa = hh === 0 ? 0 : (finHora[`${r0.fecha} ${String(hh - 1).padStart(2, "0")}`] || 0);
+
+                if (actual === undefined || actual === null) return null;
+
+                return Number(Math.max(0, actual - previa).toFixed(1));
+
+            }
+
+            let totalPeriodo = 0;
+
+            for (const fecha in dias) {
+
+                totalPeriodo += maximoDe(dias[fecha].map(r => r.lluviaDiaria)) || 0;
+
+            }
+
+            return Number(totalPeriodo.toFixed(1));
+
+        }
+
         case "lluviaAcumulada": {
 
             let total = 0;
@@ -806,6 +837,7 @@ function calcularEspecialGlobal(indicador, filas, registrosPeriodo) {
 
         }
 
+        case "lluviaPeriodo":
         case "lluviaAcumulada":
             return Number(filas.reduce((suma, f) => suma + (f.valor || 0), 0).toFixed(1));
 
@@ -883,8 +915,27 @@ function ejecutarConsultaAvanzada(registros, opciones) {
 
     // Contexto extra que algunos indicadores especiales necesitan
     const contexto = {
-        mediaVientoPeriodo: mediaDe(registrosPeriodo.map(r => r.viento))
+        mediaVientoPeriodo: mediaDe(registrosPeriodo.map(r => r.viento)),
+        granularidad
     };
+
+    // Acumulado de lluvia al final de cada hora (último registro de la hora).
+    // Se calcula sobre todos los registros para que la primera hora del
+    // periodo tenga su hora anterior de referencia.
+    if (indicador.tipo === "lluviaPeriodo" && granularidad === "hora") {
+
+        const ordenados = registros.slice().sort((a, b) =>
+            (a.fecha + a.hora).localeCompare(b.fecha + b.hora));
+
+        contexto.lluviaFinHora = {};
+
+        for (const r of ordenados) {
+            const v = Number(r.lluviaDiaria);
+            if (r.lluviaDiaria === null || r.lluviaDiaria === undefined || isNaN(v)) continue;
+            contexto.lluviaFinHora[`${r.fecha} ${r.hora.substring(0, 2)}`] = v;
+        }
+
+    }
 
     const buckets = agruparPorGranularidad(registrosPeriodo, granularidad);
 
