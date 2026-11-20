@@ -204,6 +204,11 @@ const INDICADORES_CONSULTA = {
             tipo: "lluviaAcumulada"
         },
         {
+            // Solo para Gráficas: lluvia caída en cada día/mes (sin acumular)
+            id: "lluviaPeriodo", nombre: "Precipitación por día/mes", unidad: "mm", granularidades: ["dia", "mes"],
+            tipo: "lluviaAcumulada", soloGraficas: true
+        },
+        {
             id: "masLluvioso", nombre: "Más lluvioso", unidad: "mm", granularidades: ["dia", "mes"],
             tipo: "lluviaMaxima"
         },

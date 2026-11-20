@@ -11,7 +11,7 @@ const VARIABLES_GRAFICA = [
 
 const INDICADORES_GRAFICA = {
     temperatura: ["maximo", "minimo", "media", "amplitud", "olasCalor"],
-    lluvia: ["intensidadMax", "minimoIntensidad", "mediaIntensidad", "acumulado"],
+    lluvia: ["lluviaPeriodo", "intensidadMax", "minimoIntensidad", "mediaIntensidad", "acumulado"],
     viento: ["maximo", "minimo", "media", "direccion"]
 };
 

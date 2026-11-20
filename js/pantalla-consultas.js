@@ -32,6 +32,8 @@ function actualizarIndicadores() {
 
     for (const indicador of INDICADORES_CONSULTA[variableId]) {
 
+        if (indicador.soloGraficas) continue;
+
         const opcion = document.createElement("option");
 
         opcion.value = indicador.id;
